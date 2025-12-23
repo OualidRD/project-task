@@ -40,3 +40,8 @@ yarn-error.log*
 
 # Maven
 .m2/
+
+# Logs and builds
+build.log
+docker-build.log
+*.log
