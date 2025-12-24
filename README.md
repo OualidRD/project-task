@@ -2,8 +2,13 @@
 
 A comprehensive, production-ready task management application built with **Spring Boot 3.3.5**, **React 19**, **PostgreSQL 16**, and **Docker**. Designed with clean architecture principles, JWT authentication, and a modern, animated UI.
 
-## 📋 Table of Contents
+## � Demo Video
 
+**[Watch Demo Video](https://drive.google.com/drive/u/0/folders/1ZE8eh4NVlb0fJRaUDTIykukZ5EViuWU2)** 
+
+---
+
+- [Demo Video](#demo-video)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
@@ -79,48 +84,92 @@ A comprehensive, production-ready task management application built with **Sprin
 ```
 TaskManagerApp/
 ├── backend/                          # Spring Boot API
-│   ├── src/main/java/com/example/taskmanager/
-│   │   ├── models/                   # JPA Entities
-│   │   ├── controllers/              # REST Controllers
-│   │   ├── services/                 # Business Logic
-│   │   ├── repositories/             # Data Access Layer
-│   │   ├── dtos/                     # Data Transfer Objects
-│   │   ├── config/                   # Configuration Classes
-│   │   ├── security/                 # JWT & Security
-│   │   ├── exceptions/               # Custom Exceptions
-│   │   └── TaskManagerApplication.java
-│   ├── src/main/resources/
-│   │   ├── db/migration/             # Flyway SQL Migrations
-│   │   └── application.yml           # Configuration
-│   ├── Dockerfile                    # Multi-stage Docker build
-│   ├── pom.xml                       # Maven dependencies
-│   └── .gitignore
-│
-├── frontend/                         # React Application
 │   ├── src/
-│   │   ├── components/               # Reusable Components
-│   │   ├── pages/                    # Page Components
-│   │   ├── services/                 # API Services
-│   │   ├── context/                  # React Context (Auth)
-│   │   ├── hooks/                    # Custom Hooks
-│   │   ├── assets/                   # Static Assets
-│   │   ├── App.tsx                   # Main App Component
-│   │   ├── main.tsx                  # Entry Point
-│   │   └── index.css                 # Global Styles
-│   ├── public/                       # Public Assets
-│   ├── Dockerfile                    # Multi-stage Docker build
-│   ├── nginx.conf                    # Nginx Configuration
-│   ├── vite.config.ts                # Vite Configuration
-│   ├── tsconfig.json                 # TypeScript Configuration
-│   ├── package.json                  # Dependencies
-│   ├── index.html                    # HTML Template
+│   │   ├── main/
+│   │   │   ├── java/com/example/taskmanager/
+│   │   │   │   ├── config/                      # Spring Configuration
+│   │   │   │   ├── controllers/                 # REST API Controllers
+│   │   │   │   ├── dtos/                        # Data Transfer Objects
+│   │   │   │   ├── exceptions/                  # Custom Exception Classes
+│   │   │   │   ├── models/                      # JPA Entity Models
+│   │   │   │   ├── repositories/                # Data Access Layer (Spring Data JPA)
+│   │   │   │   ├── security/                    # JWT & Spring Security Config
+│   │   │   │   ├── services/                    # Business Logic Layer
+│   │   │   │   ├── GenerateHash.java            # Utility for Password Hashing
+│   │   │   │   └── TaskManagerApplication.java  # Main Spring Boot Entry Point
+│   │   │   └── resources/
+│   │   │       ├── db/migration/                # Flyway SQL Migrations
+│   │   │       │   ├── V1__Initial_schema.sql
+│   │   │       │   ├── V2__Insert_sample_data.sql
+│   │   │       │   └── V3__Add_demo_data.sql
+│   │   │       ├── application.yml              # Main Configuration
+│   │   │       └── application-profiles.yml     # Profile-specific Config
+│   │   └── test/
+│   │       ├── java/com/example/taskmanager/
+│   │       │   ├── controllers/                 # Controller Unit Tests (@SpringBootTest)
+│   │       │   ├── repositories/                # Repository Integration Tests (@DataJpaTest)
+│   │       │   └── services/                    # Service Unit Tests (Mockito)
+│   │       └── resources/
+│   │           └── application-test.yml         # Test Database Config (H2)
+│   ├── pom.xml                       # Maven Dependencies & Build Config
+│   ├── Dockerfile                    # Multi-stage Docker Build
+│   ├── HashPassword.java             # Password Hashing Utility
+│   ├── TestBCrypt.java               # BCrypt Testing Utility
 │   └── .gitignore
 │
-├── docs/                             # Documentation
-│   └── README.md
+├── frontend/                         # React 19 + TypeScript Application
+│   ├── src/
+│   │   ├── components/               # Reusable React Components
+│   │   │   ├── AdvancedCircularProgress.tsx
+│   │   │   ├── AnimatedCounter.tsx
+│   │   │   ├── AnimatedStat.tsx
+│   │   │   ├── DeleteConfirmDialog.tsx
+│   │   │   ├── ErrorBoundary.tsx
+│   │   │   ├── LoadingOverlay.tsx
+│   │   │   ├── ProfessionalNavbar.tsx
+│   │   │   ├── ProtectedRoute.tsx
+│   │   │   └── SmartTaskFilter.tsx
+│   │   ├── pages/                    # Page Components
+│   │   │   ├── DashboardPage.tsx
+│   │   │   ├── LandingPage.tsx
+│   │   │   ├── LoginPage.tsx
+│   │   │   ├── ProjectDetailPage.tsx
+│   │   │   ├── ProjectsPage.tsx
+│   │   │   └── SignUpPage.tsx
+│   │   ├── services/                 # API Service Layer
+│   │   │   ├── api.ts                # Axios HTTP Client Config
+│   │   │   ├── authService.ts        # Authentication API Calls
+│   │   │   ├── projectService.ts     # Project API Calls
+│   │   │   └── taskService.ts        # Task API Calls
+│   │   ├── context/                  # React Context API
+│   │   │   ├── AuthContext.tsx       # Authentication State Management
+│   │   │   └── ThemeContext.tsx      # Dark/Light Theme State
+│   │   ├── hooks/                    # Custom React Hooks
+│   │   │   └── useToast.ts           # Toast Notification Hook
+│   │   ├── assets/                   # Static Assets (Images, Icons)
+│   │   ├── App.tsx                   # Main App Component
+│   │   ├── main.tsx                  # React Entry Point
+│   │   ├── index.css                 # Global Styles
+│   │   └── vite-env.d.ts             # Vite Type Definitions
+│   ├── public/                       # Static Public Assets
+│   ├── package.json                  # npm Dependencies
+│   ├── tsconfig.json                 # TypeScript Configuration
+│   ├── tsconfig.node.json            # TypeScript Node Config
+│   ├── vite.config.ts                # Vite Build Configuration
+│   ├── vite.config.d.ts              # Vite Type Definitions
+│   ├── vite.config.js                # Vite Config (alternative)
+│   ├── eslint.config.js              # ESLint Configuration
+│   ├── index.html                    # HTML Template
+│   ├── nginx.conf                    # Nginx Production Server Config
+│   ├── Dockerfile                    # Multi-stage Docker Build
+│   ├── .nvmrc                        # Node Version Management
+│   └── .gitignore
 │
-├── docker-compose.yml                # Docker Compose Stack
-└── .gitignore
+├── docker-compose.yml                # Docker Compose Orchestration
+├── .env.example                      # Environment Variables Template
+├── .gitignore                        # Git Ignore Rules
+├── insert_demo_data.sql              # Demo Data SQL Script
+└── README.md                         # Project Documentation
 ```
 
 ## 🚀 Quick Start
@@ -524,10 +573,6 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch
 5. Create a Pull Request
 
-## 📞 Support
-
-For issues, questions, or suggestions, please create an issue in the repository.
 
 ---
 
-**Happy coding! 🚀**

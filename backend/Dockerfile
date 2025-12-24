@@ -9,7 +9,7 @@ RUN mvn dependency:resolve
 
 # Copy source code and build
 COPY src ./src
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests -Dmaven.test.skip=true
 
 # Runtime stage
 FROM amazoncorretto:24
